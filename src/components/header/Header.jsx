@@ -1,63 +1,73 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Dropdown from "./Dropdown";
 
 const navElements = [
-  { value: "Example", x: -10, delay: 0.2 },
-  { value: "Example", x: -20, delay: 0.4 },
-  { value: "Example", x: -30, delay: 0.6 },
+  { value: "Example", delay: 0.2 },
+  { value: "Example", delay: 0.4 },
+  { value: "Example", delay: 0.6 },
 ];
 
 const icons = [
-  { icon: <FaGithub />, link: "https://github.com/BORRAACH" },
+  {
+    icon: <FaGithub />,
+    color: "#7e22ce",
+    link: "https://github.com/BORRAACH",
+  },
   {
     icon: <FaLinkedin />,
+    color: "#0077B5",
     link: "https://linkedin.com/in/eduardo-rodrigues-de-paula-73474b2a4/",
   },
 ];
 
-const NavListItems = () => {
-  return navElements.map((value, index) => {
+function NavListItems() {
+  return navElements.map((item, index) => {
     return (
       <motion.li
         key={index}
-        initial={{ x: value.x, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{
-          delay: value.delay,
+          delay: item.delay,
           duration: 1,
         }}
-        className="transition ease-in duration-200 hover:text-sky-400"
+        className={`transition ease-in duration-200 hover:text-purple-300`}
       >
-        <a href="#" className="hover:scale-[1.2]">
-          {value.value}
-        </a>
+        <a href="#">{item.value}</a>
       </motion.li>
     );
   });
-};
+}
 
-const ListIcons = () => {
+function ListIcons() {
   return icons.map((item, index) => {
     return (
       <li key={index}>
         <a
           href={item.link}
           target="_blanck"
-          className="text-sky-100 text-[1.5rem] transition ease-in duration-200 hover:text-[#4078c0]"
+          className={`text-sky-100 text-[1.5rem] transition ease-in duration-200 hover:text-purple-300`}
         >
           {item.icon}
         </a>
       </li>
     );
   });
-};
+}
 
 export default function Header() {
   return (
-    <div className="p-5 flex justify-between">
+    <motion.div
+      initial={{ y: -10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", delay: 0.4, duration: 1 }}
+      className="p-8 flex justify-between"
+    >
       <div>
-        <ul className="flex gap-8 text-sky-100">
+        <ul className="flex gap-8 items-center text-sky-100">
           <NavListItems />
+          <Dropdown title="Options" delay={0.8} />
         </ul>
       </div>
       <div className="icons">
@@ -65,6 +75,6 @@ export default function Header() {
           <ListIcons />
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 }
