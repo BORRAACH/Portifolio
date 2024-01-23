@@ -9,10 +9,6 @@ function App() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  useEffect(() => {
-    console.log(isInView);
-  }, [isInView]);
-
   return (
     <>
       <Router>

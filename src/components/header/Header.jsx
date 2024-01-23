@@ -3,9 +3,9 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Dropdown from "./Dropdown";
 
 const navElements = [
-  { value: "Example", delay: 0.2 },
-  { value: "Example", delay: 0.4 },
-  { value: "Example", delay: 0.6 },
+  { value: "Sobre", delay: 0.2 },
+  { value: "Tecnologias", delay: 0.4 },
+  { value: "Projetos", delay: 0.6 },
 ];
 
 const icons = [
